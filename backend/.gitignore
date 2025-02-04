@@ -1,0 +1,30 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.env
+.venv/
+env/
+ENV/
+
+# Database files
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# IDE and Editor specific files
+.vscode/
+.idea/
+*.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Other files to ignore
+*.DS_Store  # macOS specific
+Thumbs.db   # Windows specific
+.vercel

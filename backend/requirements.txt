@@ -1,0 +1,15 @@
+alembic==1.14.0
+Flask==3.1.0
+Flask_Cors==5.0.0
+Flask_JWT_Extended==4.7.1
+Flask_Login==0.6.3
+flask_mail==0.10.0
+Flask_Migrate==4.0.7
+flask_sqlalchemy==3.1.1
+python-dotenv==1.0.1
+Requests==2.32.3
+SQLAlchemy==2.0.36
+psycopg2==2.9.10
+gunicorn==23.0.0
+waitress==3.0.2
+cloudinary==1.42.1
