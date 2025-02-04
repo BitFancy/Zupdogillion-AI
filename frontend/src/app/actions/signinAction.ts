@@ -1,7 +1,7 @@
 "use server"
 
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/auth/authUtils'
 
 export const signinAction = async () => {
     const session = await getServerSession(authOptions);
