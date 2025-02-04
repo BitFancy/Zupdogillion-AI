@@ -5,7 +5,6 @@ import {
     ThumbsUp,
     MoreHorizontal,
     UserCircle,
-    X,
     Bookmark,
 } from "lucide-react";
 import { Button } from "@nextui-org/react";

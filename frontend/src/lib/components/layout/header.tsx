@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import { User } from "lucide-react";
 import {
     Button,

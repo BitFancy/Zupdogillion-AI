@@ -1,11 +1,12 @@
 "use client";
 
 import Sidebar from "@/lib/components/Sidebar";
-import { Button, Input } from "@nextui-org/react";
-import { CheckSquare, User2 } from "lucide-react";
+import { Button } from "@nextui-org/react";
+import { CheckSquare } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
+import Logo from "@/shared/assets/logo-icon.png"
 
 export default function ProfilePage() {
     const [name, setName] = useState("");
@@ -38,7 +39,7 @@ export default function ProfilePage() {
                             {/* <div className="flex h-24 w-24 items-center justify-center rounded-full bg-blue-200/20"> */}
                             {/* <User2 className="h-12 w-12 text-blue-300" /> */}
                             <Image
-                                src={session?.user?.image}
+                                src={session?.user?.image || Logo}
                                 alt="user avatar"
                                 width={100}
                                 height={100}
@@ -62,7 +63,7 @@ export default function ProfilePage() {
                                             setName(e.target.value)
                                         }
                                         className="bg-gray-700 text-white rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        placeholder={session?.user?.name}
+                                        placeholder={session?.user?.name || "user"}
                                     />
                                 </div>
                                 <Button className="flex items-center p-1 rounded-sm w-full bg-blue-200 text-blue-950 hover:bg-blue-200/30">
@@ -101,7 +102,7 @@ export default function ProfilePage() {
                                             setEmail(e.target.value)
                                         }
                                         className="bg-gray-700 text-white rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        placeholder={session?.user?.email}
+                                        placeholder={session?.user?.email || "email@email.com"}
                                     />
                                 </div>
                                 <Button className="flex items-center p-1 rounded-sm w-full bg-blue-200 text-blue-950 hover:bg-blue-200/30">
