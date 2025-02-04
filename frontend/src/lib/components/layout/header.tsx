@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Moon, Sun, User } from "lucide-react";
+import { User } from "lucide-react";
 import {
     Button,
     Dropdown,
@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 import Logo from "@/shared/assets/logo.png";
 
 const Header = () => {
-    const { theme, setTheme } = useTheme();
     const [isLogged, setIsLogged] = useState(false);
 
     useEffect(() => {

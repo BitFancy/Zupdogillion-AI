@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Meme } from "@/lib/types";
 import MemeModal from "../modal/Modal";
+import { UserCircle, MoreHorizontal, ThumbsUp, Bookmark, X } from "lucide-react";
 interface MemeCardProps {
     meme: Meme;
 }
