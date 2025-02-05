@@ -34,43 +34,43 @@ def home():
 def generate():
     try:
         prompt = request.form.get('prompt', 'memes of a cat')
-        overlay_text_top = request.form.get('overlay_text_top', 'Your Text Here')
-        overlay_text_bottom = request.form.get('overlay_text_bottom', 'Your Text Here')
-        # response = requests.post(
-        #     f"https://api.stability.ai/v2beta/stable-image/generate/core",
-        #     headers={
-        #         "authorization": f"Bearer {os.getenv('STABILITY_API_KEY')}",
-        #         "accept": "image/*"
-        #     },
-        #     files={"none": ''},
-        #     data={
-        #         "prompt": prompt,
-        #         "output_format": "png",
-        #     },
-        # )
+        overlay_text_top = request.form.get('overlay_text_top', 'Top Text Here')
+        overlay_text_bottom = request.form.get('overlay_text_bottom', 'Bottom Text Here')
+        response = requests.post(
+            f"https://api.stability.ai/v2beta/stable-image/generate/core",
+            headers={
+                "authorization": f"Bearer {os.getenv('STABILITY_API_KEY')}",
+                "accept": "image/*"
+            },
+            files={"none": ''},
+            data={
+                "prompt": f"Generate a relatable meme about {prompt} that people can connect with, using a funny character or situation.",
+                "output_format": "png",
+            },
+        )
         # print('response status from stability ai ->', response.status_code)
 
         # image_name = str(uuid.uuid4())
 
-        # if response.status_code == 200:
-            # local_image_path = './images/' + str(image_name) + '.png'
-            # with open(local_image_path, 'wb') as file:
-            #     file.write(response.content)
-        image_name = 'f5cba43c-1c0a-42cf-b19f-1123b0d50c7a'
-        if image_name == 'f5cba43c-1c0a-42cf-b19f-1123b0d50c7a':
+        image_name = 'zup-generated'
+        if response.status_code == 200:
+            local_image_path = './images/' + str(image_name) + '.png'
+            with open(local_image_path, 'wb') as file:
+                file.write(response.content)
+        if image_name == 'zup-generated':
 
             # Upload the image to Cloudinary
             print('here ----1')
-            local_full_image_path = "./images/f5cba43c-1c0a-42cf-b19f-1123b0d50c7a.png"
+            local_full_image_path = "./images/zup-generated.png"
             print('local_full_image_path ->', local_full_image_path)
-            cloudinary.uploader.upload(str("./images/f5cba43c-1c0a-42cf-b19f-1123b0d50c7a.png"), public_id=str("quickstart_butterfly"), unique_filename = False, overwrite=True)
+            cloudinary.uploader.upload(str("./images/zup-generated.png"), public_id=str("quickstart_butterfly"), unique_filename = False, overwrite=True)
             print('here---- 2')
 
             # Add text overlay using Cloudinary transformations
             image_with_text_url = cloudinary.CloudinaryImage('quickstart_butterfly').build_url(
                 transformation=[
-                    {'overlay': {'font_family': 'Arial', 'font_size': 140, 'text': overlay_text_top, 'font_color': 'red', 'opacity': 20, 'flags': 'layer_apply'}, 'width': 1000, 'height': 200, 'x': 0, 'y': 0, 'crop': 'fit'},
-                    {'overlay': {'font_family': 'Arial', 'font_size': 40, 'text': overlay_text_bottom, 'font_color': 'red', 'opacity': 20, 'flags': 'layer_apply'}, 'width': 1000, 'height': 400, 'x': 0, 'y': 400, 'crop': 'fit'}
+                    {'overlay': {'font_family': 'Arial', 'font_size': 120, 'text': overlay_text_top, 'font_color': 'red', 'opacity': 20, 'flags': 'layer_apply'}, 'width': 1000, 'height': 200, 'x': 0, 'y': 0, 'crop': 'fit'},
+                    {'overlay': {'font_family': 'Arial', 'font_size': 100, 'text': overlay_text_bottom, 'font_color': 'red', 'opacity': 20, 'flags': 'layer_apply'}, 'width': 1000, 'height': 400, 'x': 0, 'y': 400, 'crop': 'fit'}
                 ]
             )
 
