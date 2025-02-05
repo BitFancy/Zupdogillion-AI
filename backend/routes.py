@@ -12,6 +12,7 @@ import random
 import cloudinary
 import cloudinary.uploader
 from cloudinary import CloudinaryImage
+from io import BytesIO
 
 load_dotenv()
 
@@ -36,8 +37,9 @@ def generate():
         prompt = request.form.get('prompt', 'memes of a cat')
         overlay_text_top = request.form.get('overlay_text_top', 'Top Text Here')
         overlay_text_bottom = request.form.get('overlay_text_bottom', 'Bottom Text Here')
+        
         response = requests.post(
-            f"https://api.stability.ai/v2beta/stable-image/generate/core",
+            "https://api.stability.ai/v2beta/stable-image/generate/core",
             headers={
                 "authorization": f"Bearer {os.getenv('STABILITY_API_KEY')}",
                 "accept": "image/*"
@@ -48,23 +50,18 @@ def generate():
                 "output_format": "png",
             },
         )
-        # print('response status from stability ai ->', response.status_code)
 
-        # image_name = str(uuid.uuid4())
-
-        image_name = 'zup-generated'
         if response.status_code == 200:
-            local_image_path = './images/' + str(image_name) + '.png'
-            with open(local_image_path, 'wb') as file:
-                file.write(response.content)
-        if image_name == 'zup-generated':
+            # Use BytesIO to handle the image data in memory
+            image_data = BytesIO(response.content)
 
-            # Upload the image to Cloudinary
-            print('here ----1')
-            local_full_image_path = "./images/zup-generated.png"
-            print('local_full_image_path ->', local_full_image_path)
-            cloudinary.uploader.upload(str("./images/zup-generated.png"), public_id=str("quickstart_butterfly"), unique_filename = False, overwrite=True)
-            print('here---- 2')
+            # Upload the image to Cloudinary directly from memory
+            upload_result = cloudinary.uploader.upload(
+                image_data,
+                public_id="quickstart_butterfly",
+                unique_filename=False,
+                overwrite=True
+            )
 
             # Add text overlay using Cloudinary transformations
             image_with_text_url = cloudinary.CloudinaryImage('quickstart_butterfly').build_url(
@@ -75,12 +72,9 @@ def generate():
             )
 
             image_history.append(image_with_text_url)
-            print(image_history)
             return jsonify({"image_url": image_with_text_url})
         else:
-            # error_message = response.json()
-            # raise Exception(f"Stability API Error: {error_message}")
-            return jsonify({"error"}), 500
+            return jsonify({"error": "Failed to generate image"}), 500
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
