@@ -14,11 +14,11 @@ import Logo from "@/shared/assets/logo.png";
 import { FiMenu } from "react-icons/fi";
 
 const Header = () => {
-    const [isLogged, setIsLogged] = useState(false);
+    // const [isLogged, setIsLogged] = useState(false);
 
-    useEffect(() => {
-        setIsLogged(true);
-    }, []);
+    // useEffect(() => {
+    //     setIsLogged(true);
+    // }, []);
 
     return (
         <header className="bg-[#080c11] dark:bg-gray-800 shadow-md">
