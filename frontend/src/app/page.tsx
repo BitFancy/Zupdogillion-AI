@@ -69,16 +69,15 @@ export default async function Home() {
             <div className="flex flex-col mx-auto px-4 gap-y-32">
                 <div className="lg:flex items-center mx-5 xl:mx-16 mt-[50px] gap-6 2xl:mx-32">
                     <div className="flex text-center lg:mt-[100px] lg:text-left flex-col mb-8 xl:gap-7 2xl:gap-10 md:mb-0">
-                        <h2 className="text-4xl lg:text-4xl xl:text-4xl 2xl:text-5xl mb-6 text-blue-500 font-bold dark:text-gray-300">
+                        <h2 className="text-4xl text-[28px] lg:text-4xl xl:text-4xl 2xl:text-5xl mb-6 text-blue-500 font-bold dark:text-gray-300">
                             Wellcome to Zupdogillion
                         </h2>
-                        <h1 className="text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold md:text-7xl mb-8 text-gray-100 dark:text-white">
+                        <h1 className="text-7xl text-[40px] lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold md:text-7xl mb-8 text-gray-100 dark:text-white">
                             Turn text into memes with AI
                         </h1>
-                        <h1 className="text-2xl 2xl:mr-32 md:text-xl font-bold mb-4 text-gray-100 dark:text-white">
+                        <h1 className="text-2xl text-[16px] 2xl:mr-32 md:text-xl font-bold mb-4 text-gray-100 dark:text-white">
                             Turn text into memes with AI Turn text into memes
-                            with AI Turn text into memes with AI Turn text into
-                            memes with AI
+                            with AI Turn text into memes with 
                         </h1>
                         <div className="my-5">
                             <Link
@@ -103,7 +102,7 @@ export default async function Home() {
 
                 <div className="lg:flex flex-col xl:mx-16 2xl:mx-32 text-center mx-5 mb-16 pt-16">
                     <div className="flex flex-col lg:w-[60%] lg:text-left">
-                        <h2 className="text-5xl lg:text-6xl 2xl:text-7xl leading-snug font-bold mb-6 text-gray-100 dark:text-white">
+                        <h2 className="text-5xl text-[32px] lg:text-6xl 2xl:text-7xl leading-snug font-bold mb-6 text-gray-100 dark:text-white">
                             <span className="text-blue-600"> Publish </span> and
                             <span className="text-blue-600"> Look </span>other
                             memes from users
@@ -136,10 +135,10 @@ export default async function Home() {
                 </div>
 
                 <div className="mb-16 2xl:mx-24 ">
-                    <h2 className="text-5xl mx-5 lg:text-6xl leading-snug font-bold mb-6 text-gray-100 dark:text-white text-center">
+                    <h2 className="text-5xl text-[36px] mx-5 lg:text-6xl leading-snug font-bold mb-6 text-gray-100 dark:text-white text-center">
                         Zupdogillion.ai Tutorial
                     </h2>
-                    <p className="text-center lg:text-2xl mx-5 pb-16 text-gray-300 text-xl">
+                    <p className="text-center text-[14px] lg:text-2xl mx-5 pb-16 text-gray-300 text-xl">
                         Why should you use Zupdogillion.ai to generate memes
                         over other popular tools?
                     </p>

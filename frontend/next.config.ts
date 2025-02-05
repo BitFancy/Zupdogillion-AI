@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        // hostname: 'lh3.googleusercontent.com',
         hostname: 'https://res.cloudinary.com',
         port: '',
         pathname: '/**', 

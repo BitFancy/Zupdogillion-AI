@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { User } from "lucide-react";
 import {
     Button,
     Dropdown,
@@ -12,6 +11,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Logo from "@/shared/assets/logo.png";
+import { FiMenu } from "react-icons/fi";
 
 const Header = () => {
     const [isLogged, setIsLogged] = useState(false);
@@ -34,7 +34,7 @@ const Header = () => {
                         >
                             <Image
                                 src={Logo}
-                                width={250}
+                                width={150}
                                 height={50}
                                 alt="logo"
                                 unoptimized={true}
@@ -61,14 +61,6 @@ const Header = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/pricing"
-                                    className="text-gray-200 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white"
-                                >
-                                    Pricing
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
                                     href="/about"
                                     className="text-gray-200 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white"
                                 >
@@ -77,70 +69,32 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div className="flex items-center space-x-4">
-                        {/* <div
-                            onClick={() =>
-                                setTheme(theme === "dark" ? "light" : "dark")
-                            }
-                            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
-                            aria-label="Toggle theme"
+                    <div className="flex justify-between items-center gap-2">
+                    <Dropdown
+                        showArrow
+                        className="w-full bg-[#202f42] shadow-md p-0"
+                    >
+                        <DropdownTrigger className="cursor-pointer text-lg">
+                            Account
+                        </DropdownTrigger>
+                        <DropdownMenu
+                            aria-label="User actions p-0"
+                            className="p-0 w-[150px]"
                         >
-                            {theme === "dark" ? <Sun size={20}/> : <Moon />}
-                        </div> */}
-
-                        {!isLogged ? (
-                            <div className="relative mb-0">
-                                <Dropdown
-                                    showArrow
-                                    className="bg-white rounded-md shadow-md mb-0"
-                                >
-                                    <DropdownTrigger>
-                                        <User size={25} />
-                                    </DropdownTrigger>
-                                    <DropdownMenu
-                                        aria-label="User actions"
-                                        className="p-3"
-                                    >
-                                        <DropdownItem key="my-memes">
-                                            <Link
-                                                href="/my-memes"
-                                                className="block px-4 py-2 text-sm text-gray-100 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                                            >
-                                                My Memes
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem key="pricing">
-                                            <Link
-                                                href="/pricing"
-                                                className="block px-4 py-2 text-sm text-gray-100 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                                            >
-                                                Pricing
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem key="logout">
-                                            <Button className="block px-4 py-2 text-sm mb-0 text-gray-100 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                Logout
-                                            </Button>
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
-                            </div>
-                        ) : (
-                            <div className="flex">
-                                <Link
-                                    href="/signin"
-                                    className="block px-4 py-2 text-sm text-gray-100 dark:text-gray-200 hover:text-gray-600 dark:hover:bg-gray-600"
-                                >
-                                    Sign In
-                                </Link>
-                                <Link
-                                    href="/signup"
-                                    className="block px-4 py-2 text-sm text-gray-100 dark:text-gray-200 hover:text-gray-600 dark:hover:bg-gray-600"
-                                >
-                                    Sign Up
-                                </Link>{" "}
-                            </div>
-                        )}
+                            <DropdownItem key="signin" className="p-0">
+                                <Button className="hover:bg-[#16202e] w-full block m-0 p-0">Sign In</Button>
+                            </DropdownItem>
+                            <DropdownItem key="signup" className="p-0">
+                                <Button className="hover:bg-[#16202e] w-full block m-0 p-0">Sign Up</Button>
+                            </DropdownItem>
+                            <DropdownItem key="logout" className="p-0">
+                                <Button className="hover:bg-[#16202e] w-full block m-0 p-0">Log Out</Button>
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                    <button className="lg:hidden flex ml-[10px]">
+                        <FiMenu size={25} />
+                    </button>
                     </div>
                 </div>
             </div>

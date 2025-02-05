@@ -25,16 +25,14 @@ const AllMemes: React.FC = () => {
         const fetchMemes = async () => {
             setLoading(true);
             try {
-                // const res = await fetch("https://mongoose-infinite-truly.ngrok-free.app/api/all_memes");
                 const res = await fetch(
-                    "https://zupdogollion-ai.onrender.com/api/all_memes"
+                    "https://zupdogillion-ai-2ces.vercel.app/api/all_memes"
                 );
                 if (!res.ok) {
                     throw new Error("Failed to fetch memes!");
                 }
 
                 const data: Meme[] = await res.json();
-                console.log("memes from backend ------------>", data);
                 setMemes(data);
             } catch (error) {
                 console.error(error);

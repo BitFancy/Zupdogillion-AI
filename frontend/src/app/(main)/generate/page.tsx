@@ -23,7 +23,7 @@ export default function Generate() {
 
     const fetchHistory = async () => {
         try {
-            const response = await fetch("http://localhost:5328/api/history");
+            const response = await fetch("https://zupdogillion-ai-2ces.vercel.app/api/history");
             const text = await response.text();
             const data = JSON.parse(text);
             setHistory(data.history);
@@ -45,9 +45,10 @@ export default function Generate() {
         try {
             const formData = new FormData();
             formData.append("prompt", prompt.trim());
+            console.log('clicked generate button')
 
             const response = await fetch(
-                "https://mongoose-infinite-truly.ngrok-free.app/api/generate",
+                "https://zupdogillion-ai-2ces.vercel.app/api/generate",
                 {
                     method: "POST",
                     body: formData,

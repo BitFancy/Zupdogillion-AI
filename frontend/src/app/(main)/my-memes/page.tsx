@@ -14,7 +14,7 @@ export default function MyMemes() {
         const fetchMemes = async () => {
             try {
                 const res = await fetch(
-                    "https://mongoose-infinite-truly.ngrok-free.app/api/all_memes"
+                    "https://zupdogillion-ai-2ces.vercel.app/api/all_memes"
                 );
                 if (!res.ok) {
                     throw new Error("Failed to fetch memes!");

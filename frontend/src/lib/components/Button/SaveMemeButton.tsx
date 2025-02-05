@@ -8,7 +8,7 @@ const SaveMemeButton = () => {
             console.log("save meme clicked ---------");
             console.log("user  email -> ", session?.user?.email);
             const response = await fetch(
-                "https://mongoose-infinite-truly.ngrok-free.app/api/save_memes",
+                "https://zupdogillion-ai-2ces.vercel.app/api/save_memes",
                 {
                     method: "POST",
                     headers: {
