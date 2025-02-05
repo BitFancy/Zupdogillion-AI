@@ -9,7 +9,7 @@ import {
     DropdownItem,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Logo from "@/shared/assets/logo.png";
 import { FiMenu } from "react-icons/fi";
 
