@@ -63,6 +63,8 @@ def generate():
                 overwrite=True
             )
 
+            print('upload result->', upload_result)
+
             # Add text overlay using Cloudinary transformations
             image_with_text_url = cloudinary.CloudinaryImage('quickstart_butterfly').build_url(
                 transformation=[
@@ -72,6 +74,7 @@ def generate():
             )
 
             image_history.append(image_with_text_url)
+            print('upload result->', image_with_text_url)
             return jsonify({"image_url": image_with_text_url})
         else:
             return jsonify({"error": "Failed to generate image"}), 500

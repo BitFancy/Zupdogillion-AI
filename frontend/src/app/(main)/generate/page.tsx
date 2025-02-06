@@ -48,8 +48,8 @@ export default function Generate() {
             console.log('clicked generate button')
 
             const response = await fetch(
-                "https://zupdogillion-ai-2ces.vercel.app/api/generate",
-                // "http://localhost:5328/api/generate",
+                // "https://zupdogillion-ai-2ces.vercel.app/api/generate",
+                "http://localhost:5328/api/generate",
                 {
                     method: "POST",
                     body: formData,
@@ -61,6 +61,8 @@ export default function Generate() {
             }
 
             const data = await response.json();
+            console.log("data ->", data);
+            console.log("generated image url ->", data.image_url);
             setImageUrl(data.image_url);
         } catch (error) {
             console.error("Error generating meme: ", error);
